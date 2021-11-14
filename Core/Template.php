@@ -1,16 +1,16 @@
 <?php
 
-namespace Core;
+namespace App\Core;
 
-use Contracts\TemplateEngingeContract;
+use App\Contracts\TemplateEngingeContract;
 
 class Template implements TemplateEngingeContract {
 
-    public $data = [];
+    public $data = [] ;
     private $fileContent = '';
-    public function assign(array|object $data)
+    public function assign(array $data)
     {
-        $this->data[] = $data;
+        $this->data = array_merge($this->data, $data);
         return $this;
     }
 
@@ -19,25 +19,20 @@ class Template implements TemplateEngingeContract {
        echo  $this->varConverter();
     }
 
-    public function view(string $path)
+    public function view(string $path, array $data)
     {
+        $this->assign($data);
         $newPath =  dirname(__DIR__).DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.$path.'.tmp.php';
         if(file_exists($newPath)){
-            $this->fileContent =  file_get_contents($newPath);
+            foreach ($this->data as $key => $value)
+            {
+                $$key = $value;
+            }
+            ob_start();
+            require_once($newPath);
+            echo ob_get_clean();
         }else{
             throw new \Exception('Template File Not Exists');
         }
-
-
-        return $this;
-    }
-
-    public function varConverter(){
-        // match if method  @if @for @each
-        // match list name email {{$ name }}
-        dump($this->data);
-        return  preg_replace_callback('/{{\$([a-zA-z\-_>]+)}}/i', function($match) {
-//           return  $this->data->{$match[1]};
-        }, $this->fileContent);
     }
 }

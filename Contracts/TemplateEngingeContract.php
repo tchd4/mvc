@@ -1,9 +1,9 @@
 <?php
-namespace Contracts;
+namespace App\Contracts;
 
 interface TemplateEngingeContract {
 
-    public function view(string $path);
-    public function assign(array|object $data);
+    public function view(string $path, array $data);
+    public function assign(array $data);
     public function render();
 }

@@ -8,10 +8,6 @@
     <title><?=$title?></title>
 </head>
 <body>
-<?php
-    foreach ($users as $user) {
-        echo "<h1>".$user->name."<h1>";
-    }
-?>
+<h1><?=$user['name']?></h1>
 </body>
 </html>
