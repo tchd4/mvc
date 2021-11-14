@@ -1,0 +1,15 @@
+{
+    "name": "mamdouh/mvc",
+    "autoload": {
+        "psr-4": {
+            "App\\": "."
+        }
+    },
+    "authors": [
+        {
+            "name": "Mamdouh Khaled",
+            "email": "Mamdouh.khaled@live.com"
+        }
+    ],
+    "require": {}
+}
