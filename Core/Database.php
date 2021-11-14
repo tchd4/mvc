@@ -1,6 +1,6 @@
 <?php
-namespace Core;
-use Core\Config\Config;
+namespace App\Core;
+use App\Core\Config\Config;
 class Database {
     protected $_connection;
 
@@ -54,7 +54,7 @@ class Database {
         $columns =  "`".implode('`, `', array_keys($parameters))."`";
         $params =  ":".implode(', :', array_keys($parameters));
         $this->parameters = $parameters;
-        $this->_query = "INSERT INTO ".$this->table." (".$columns.") VALUES (".$params.")" ;
+        $this->_query[] = "INSERT INTO ".$this->table." (".$columns.") VALUES (".$params.")" ;
         $this->executeStatement();
     }
 

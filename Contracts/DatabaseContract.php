@@ -1,5 +1,5 @@
 <?php
-namespace Contract;
+namespace App\Contracts;
 interface DatabaseContract {
 
 }
