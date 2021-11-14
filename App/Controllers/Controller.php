@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Controllers;
+namespace App\App\Controllers;
 
 
-use Core\Template;
+use App\Core\Template;
 
 class Controller
 {
