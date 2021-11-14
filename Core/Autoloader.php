@@ -1,6 +1,6 @@
 <?php
 set_exception_handler(function ($exception){
-    echo "<br>Exception: " , $exception->getMessage(), "\n";
+    echo "<br>Exception.php: " , $exception->getMessage(), "\n";
     echo "<br>Previous: " , $exception->getPrevious(), "\n";
     echo "<br>Code: " , $exception->getCode(), "\n";
     echo "<br>File: " , $exception->getFile(), "\n";

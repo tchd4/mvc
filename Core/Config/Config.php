@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Config;
+namespace App\Core\Config;
 
 class Config {
     public static  $host   = 'localhost';
