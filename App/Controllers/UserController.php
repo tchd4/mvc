@@ -1,6 +1,7 @@
 <?php
-namespace App\Controllers;
-use App\Models\User;
+namespace App\App\Controllers;
+use App\App\Models\User;
+use App\Core\Collection;
 
 class UserController extends Controller {
     private $user = null;
@@ -13,17 +14,25 @@ class UserController extends Controller {
 
     public function index()
     {
-        dd($this->user->select()->all());
-
+        $user = new Collection($this->user->select()->all());
+        return $this->temp->view('layout',
+            [
+                "users" => $user->collections(),
+                "title"=> "Mamdouh Khaled",
+            ]
+        );
     }
+
 
     public function show()
     {
-        $data = $this->user->select()->get();
-        $this->temp->view('layout')
-                    ->assign($data)
-                    ->assign(['title'=>"Title Mamdouh"])
-                    ->render();
+        $user = new Collection($this->user->select()->get());
+        $this->temp->view('userShow',
+            [
+                'user'=> $user->make()->toArray(),
+                'title'=>"Show  User"
+            ]
+        );
     }
 
     public function store()

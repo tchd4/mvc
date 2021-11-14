@@ -1,7 +1,7 @@
 <?php
-namespace App\Models;
+namespace App\App\Models;
 
-use Core\Database;
+use App\Core\Database;
 
 class User extends Database {
 
